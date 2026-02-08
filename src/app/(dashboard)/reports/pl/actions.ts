@@ -66,7 +66,7 @@ export async function getPLData(startDate: string, endDate: string): Promise<PLD
   let totalExpenses = 0;
 
   for (const expense of expenses || []) {
-    const categoryName = (expense.category as { name: string } | null)?.name || 'Uncategorized';
+    const categoryName = (expense.category as unknown as { name: string } | null)?.name || 'Uncategorized';
     const amount = expense.amount || 0;
     totalExpenses += amount;
     categoryMap.set(categoryName, (categoryMap.get(categoryName) || 0) + amount);

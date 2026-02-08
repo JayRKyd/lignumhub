@@ -24,7 +24,7 @@ export default async function ReceiptReviewPage({
   const categories = await getExpenseCategories();
 
   const showConfidenceWarning =
-    receipt.confidence_score !== null && receipt.confidence_score < 0.7;
+    receipt.confidence_score != null && receipt.confidence_score < 0.7;
 
   return (
     <div className="p-6 max-w-7xl mx-auto">

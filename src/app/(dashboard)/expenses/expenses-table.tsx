@@ -45,7 +45,7 @@ export function ExpensesTable({ expenses }: ExpensesTableProps) {
             {row.vendor_name}
           </span>
           {row.receipt_url && (
-            <Receipt className="h-4 w-4 text-green-500" title="Has receipt" />
+            <Receipt className="h-4 w-4 text-green-500" />
           )}
         </div>
       ),

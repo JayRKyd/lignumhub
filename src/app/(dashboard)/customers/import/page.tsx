@@ -160,7 +160,7 @@ export default function ImportCustomersPage() {
     setImportResult(result)
     setIsImporting(false)
 
-    if (result.success) {
+    if (result.errors.length === 0) {
       setTimeout(() => {
         router.push('/customers')
       }, 2000)
@@ -359,7 +359,7 @@ export default function ImportCustomersPage() {
       )}
 
       {/* Actions */}
-      {parsedCustomers.length > 0 && validCount > 0 && !importResult?.success && (
+      {parsedCustomers.length > 0 && validCount > 0 && !importResult && (
         <div className="flex justify-end gap-3">
           <Button
             variant="outline"
