@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useRef, useCallback } from "react";
-import { Upload, X, Image as ImageIcon, Camera } from "lucide-react";
+import { Upload, X, Camera } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Button } from "./button";
 
@@ -27,21 +27,14 @@ export function FileUpload({
   const fileInputRef = useRef<HTMLInputElement>(null);
   const cameraInputRef = useRef<HTMLInputElement>(null);
 
-  const validateFile = (file: File): string | null => {
-    if (maxSize && file.size > maxSize) {
-      return `File size exceeds ${Math.round(maxSize / 1024 / 1024)}MB limit`;
-    }
-    if (accept && !file.type.match(accept.replace("*", ".*"))) {
-      return "Invalid file type";
-    }
-    return null;
-  };
-
   const handleFile = useCallback(
     (file: File) => {
-      const validationError = validateFile(file);
-      if (validationError) {
-        setError(validationError);
+      if (maxSize && file.size > maxSize) {
+        setError(`File size exceeds ${Math.round(maxSize / 1024 / 1024)}MB limit`);
+        return;
+      }
+      if (accept && !file.type.match(accept.replace("*", ".*"))) {
+        setError("Invalid file type");
         return;
       }
 

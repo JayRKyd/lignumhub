@@ -5,8 +5,9 @@ import type { Item } from "@/types/types";
 export const getInitialValue = (variableName: string, defaultValue?: string): string => {
   try {
     return localStorage.getItem(variableName) || defaultValue || "";
-  } catch (error) {
-    console.error("Error while getting item from local storage:", error);
+  } catch (_error) {
+    // eslint-disable-next-line no-console
+    console.error("Error while getting item from local storage:", _error);
     return defaultValue || "";
   }
 };
@@ -14,8 +15,9 @@ export const getInitialValue = (variableName: string, defaultValue?: string): st
 export const getItemValue = (): Item[] => {
   try {
     return getItems(localStorage.getItem("items"));
-  } catch (error) {
-    console.error("Error while getting item from local storage:", error);
+  } catch (_error) {
+    // eslint-disable-next-line no-console
+    console.error("Error while getting item from local storage:", _error);
     return [
       {
         itemDescription: "",

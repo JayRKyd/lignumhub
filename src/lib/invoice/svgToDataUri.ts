@@ -10,8 +10,9 @@ export const svgToDataUri = async (svgString: string) => {
       const dataUri = canvas.toDataURL("image/png");
       return dataUri;
     }
-  } catch (error) {
-    console.error("Error occured:", error);
+  } catch (_error) {
+    // eslint-disable-next-line no-console
+    console.error("Error occured:", _error);
     return "";
   }
 };

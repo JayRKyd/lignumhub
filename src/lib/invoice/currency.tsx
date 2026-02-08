@@ -14,9 +14,9 @@ import {
   TW,
   GB,
   BS,
-  FlagComponent,
   ID,
 } from "country-flag-icons/react/1x1";
+import type { FlagComponent } from "country-flag-icons/react/1x1";
 
 export const currencyList: {
   value: string;
