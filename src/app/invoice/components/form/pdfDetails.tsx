@@ -20,7 +20,7 @@ export const PdfDetails = ({
   invoiceDetails,
   paymentDetails,
   invoiceTerms,
-  countryImageUrl,
+  countryImageUrl: _countryImageUrl,
 }: PdfDetailsProps) => {
   const currency = (invoiceDetails.currency || "USD").toUpperCase();
   const currencyDetails = currencyList.find(

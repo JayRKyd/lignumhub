@@ -1,11 +1,11 @@
-import { InputHTMLAttributes, forwardRef } from "react";
+import { type InputHTMLAttributes, forwardRef } from "react";
 
 export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   label?: string;
 }
 
 const Input = forwardRef<HTMLInputElement, InputProps>(
-  ({ className, type, label, ...props }, ref) => (
+  ({ className: _className, type, label, ...props }, ref) => (
     <div
       className={`flex items-center relative ${
         label ? "h-[52px]" : "h-[42px]"

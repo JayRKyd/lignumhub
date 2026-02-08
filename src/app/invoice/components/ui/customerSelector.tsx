@@ -79,6 +79,7 @@ export const CustomerSelector = ({ onCustomerSelect }: CustomerSelectorProps) =>
     };
 
     fetchCustomers();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // Filter customers based on search

@@ -27,21 +27,14 @@ export function FileUpload({
   const fileInputRef = useRef<HTMLInputElement>(null);
   const cameraInputRef = useRef<HTMLInputElement>(null);
 
-  const validateFile = (file: File): string | null => {
-    if (maxSize && file.size > maxSize) {
-      return `File size exceeds ${Math.round(maxSize / 1024 / 1024)}MB limit`;
-    }
-    if (accept && !file.type.match(accept.replace("*", ".*"))) {
-      return "Invalid file type";
-    }
-    return null;
-  };
-
   const handleFile = useCallback(
     (file: File) => {
-      const validationError = validateFile(file);
-      if (validationError) {
-        setError(validationError);
+      if (maxSize && file.size > maxSize) {
+        setError(`File size exceeds ${Math.round(maxSize / 1024 / 1024)}MB limit`);
+        return;
+      }
+      if (accept && !file.type.match(accept.replace("*", ".*"))) {
+        setError("Invalid file type");
         return;
       }
 
@@ -133,6 +126,7 @@ export function FileUpload({
       >
         {preview ? (
           <div className="relative">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src={preview}
               alt="Preview"
